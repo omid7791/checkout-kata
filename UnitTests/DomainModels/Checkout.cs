@@ -44,22 +44,6 @@ public class Checkout : ICheckout
     }
 }
 
-public class BasketItemA : IBasketItem
-{
-    public ItemType ItemType => ItemType.A;
-
-    public int GetPrice()
-    {
-        var inBatchesOfThree = Count / 3;
-        var remainder = Count % 3;
-        var totalPrice = (inBatchesOfThree * 130) + (remainder * 50);
-        
-        return totalPrice;
-    }
-
-    public int Count { get; set; }
-}
-
 public class BasketItemB : IBasketItem
 {
     public ItemType ItemType => ItemType.B;
@@ -70,43 +54,4 @@ public class BasketItemB : IBasketItem
     }
 
     public int Count { get; set; }
-}
-
-public class BasketItemC : IBasketItem
-{
-    public ItemType ItemType => ItemType.C;
-
-    public int GetPrice()
-    {
-        return 20;
-    }
-
-    public int Count { get; set; }
-}
-
-public class BasketItemD : IBasketItem
-{
-    public ItemType ItemType => ItemType.D;
-
-    public int GetPrice()
-    {
-        return 15;
-    }
-
-    public int Count { get; set; }
-}
-
-public interface IBasketItem
-{
-    public ItemType ItemType { get; }
-    public int GetPrice();
-    public int Count { get; set; }
-}
-
-public enum ItemType
-{
-    A,
-    B,
-    C,
-    D
 }
