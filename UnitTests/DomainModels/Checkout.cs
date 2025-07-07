@@ -10,6 +10,21 @@ public class Checkout : ICheckout
         {
             _basketItems.Add(new BasketItem { Item = item, Price = 50 });
         }
+        
+        if (item == "B")
+        {
+            _basketItems.Add(new BasketItem { Item = item, Price = 30 });
+        }
+        
+        if (item == "C")
+        {
+            _basketItems.Add(new BasketItem { Item = item, Price = 20 });
+        }
+        
+        if (item == "D")
+        {
+            _basketItems.Add(new BasketItem { Item = item, Price = 15 });
+        }
     }
 
     public int GetTotalPrice()
