@@ -25,7 +25,15 @@ public class Checkout : ICheckout
 
                 break;
             case "B":
-                _basketItems.Add(new BasketItemB());
+                if (_basketItems.All(basketItem => basketItem.ItemType != ItemType.B))
+                {
+                    _basketItems.Add(new BasketItemB { Count = 1 });
+                }
+                else
+                {
+                    _basketItems.Find(basketItem => basketItem.ItemType == ItemType.B)!.Count++;
+                }
+                
                 break;
             case "C":
                 _basketItems.Add(new BasketItemC());
@@ -42,16 +50,4 @@ public class Checkout : ICheckout
 
         return totalPrice;
     }
-}
-
-public class BasketItemB : IBasketItem
-{
-    public ItemType ItemType => ItemType.B;
-
-    public int GetPrice()
-    {
-        return 30;
-    }
-
-    public int Count { get; set; }
 }
