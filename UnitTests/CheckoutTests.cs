@@ -64,4 +64,18 @@ public class CheckoutTests
         Assert.Equal(130, totalPrice);
     }
     
+    [Fact]
+    public void GivenBasketHasTwoItemB_WhenGettingTotalPrice_ShouldReturn45()
+    {
+        // Arrange
+        var sut = new Checkout();
+        sut.Scan("B");
+        sut.Scan("B");
+        
+        // Act
+        var totalPrice = sut.GetTotalPrice();
+
+        // Assert
+        Assert.Equal(45, totalPrice);
+    }
 }
