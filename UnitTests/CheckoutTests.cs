@@ -47,4 +47,21 @@ public class CheckoutTests
         // Assert
         Assert.Equal(115, totalPrice);
     }
+    
+    [Fact]
+    public void GivenBasketHasThreeItemA_WhenGettingTotalPrice_ShouldReturn130()
+    {
+        // Arrange
+        var sut = new Checkout();
+        sut.Scan("A");
+        sut.Scan("A");
+        sut.Scan("A");
+        
+        // Act
+        var totalPrice = sut.GetTotalPrice();
+
+        // Assert
+        Assert.Equal(130, totalPrice);
+    }
+    
 }
