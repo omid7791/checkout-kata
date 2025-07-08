@@ -36,10 +36,26 @@ public class Checkout : ICheckout
                 
                 break;
             case "C":
-                _basketItems.Add(new BasketItemC());
+                if (_basketItems.All(basketItem => basketItem.ItemType != ItemType.C))
+                {
+                    _basketItems.Add(new BasketItemC { Count = 1 });
+                }
+                else
+                {
+                    _basketItems.Find(basketItem => basketItem.ItemType == ItemType.C)!.Count++;
+                }
+                
                 break;
             case "D":
-                _basketItems.Add(new BasketItemD());
+                if (_basketItems.All(basketItem => basketItem.ItemType != ItemType.D))
+                {
+                    _basketItems.Add(new BasketItemD { Count = 1 });
+                }
+                else
+                {
+                    _basketItems.Find(basketItem => basketItem.ItemType == ItemType.D)!.Count++;
+                }
+                
                 break;
         }
     }
