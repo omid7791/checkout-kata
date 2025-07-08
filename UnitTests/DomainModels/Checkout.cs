@@ -2,11 +2,17 @@ namespace UnitTests.DomainModels;
 
 public class Checkout : ICheckout
 {
+    private readonly List<IPricingRule> _pricingRules;
     private readonly List<IBasketItem> _basketItems = [];
+
+    public Checkout(List<IPricingRule>  pricingRules)
+    {
+        _pricingRules = pricingRules;
+    }
 
     public Checkout()
     {
-        
+        _pricingRules = [];
     }
     
     public void Scan(string item)

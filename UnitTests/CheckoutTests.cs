@@ -94,4 +94,21 @@ public class CheckoutTests
         // Assert
         Assert.Equal(95, totalPrice);
     }
+    
+    [Fact]
+    public void GivenBasketHasPricingRuleToDiscountTwoItemCs_WhenGettingTotalPrice_ShouldReturnCorrectDiscount()
+    {
+        // Arrange
+        var pricingRuleForItemC = new PricingRuleForItemC();
+        var sut = new Checkout([pricingRuleForItemC]);
+        sut.Scan("C");
+        sut.Scan("C");
+        sut.Scan("C");
+        
+        // Act
+        var totalPrice = sut.GetTotalPrice();
+
+        // Assert
+        Assert.Equal(35, totalPrice);
+    }
 }
