@@ -21,7 +21,8 @@ public class CheckoutTests
     public void GivenBasketHasItemA_WhenGettingTotalPrice_ShouldReturn50()
     {
         // Arrange
-        var sut = new Checkout();
+        var pricingRuleForItemA = new PricingRuleForItemA();
+        var sut = new Checkout([pricingRuleForItemA]);
         sut.Scan("A");
         
         // Act
@@ -35,7 +36,17 @@ public class CheckoutTests
     public void GivenBasketHasItemsA_B_C_D_WhenGettingTotalPrice_ShouldReturn115()
     {
         // Arrange
-        var sut = new Checkout();
+        var pricingRuleForItemA = new PricingRuleForItemA();
+        var pricingRuleForItemB = new PricingRuleForItemB();
+        var pricingRuleForItemC = new PricingRuleForItemC();
+        var pricingRuleForItemD = new PricingRuleForItemD();
+        
+        var sut = new Checkout([
+            pricingRuleForItemA,  
+            pricingRuleForItemB, 
+            pricingRuleForItemC, 
+            pricingRuleForItemD]);
+        
         sut.Scan("A");
         sut.Scan("B");
         sut.Scan("C");
@@ -52,7 +63,9 @@ public class CheckoutTests
     public void GivenBasketHasThreeItemA_WhenGettingTotalPrice_ShouldReturn130()
     {
         // Arrange
-        var sut = new Checkout();
+        var pricingRuleForItemA = new PricingRuleForItemA();
+        
+        var sut = new Checkout([pricingRuleForItemA]);
         sut.Scan("A");
         sut.Scan("A");
         sut.Scan("A");
@@ -68,7 +81,9 @@ public class CheckoutTests
     public void GivenBasketHasTwoItemB_WhenGettingTotalPrice_ShouldReturn45()
     {
         // Arrange
-        var sut = new Checkout();
+        var pricingRuleForItemB = new PricingRuleForItemB();
+        
+        var sut = new Checkout([pricingRuleForItemB]);
         sut.Scan("B");
         sut.Scan("B");
         
@@ -83,7 +98,10 @@ public class CheckoutTests
     public void GivenBasketHasTwoItemBAndItemA_WhenGettingTotalPrice_ShouldReturn95()
     {
         // Arrange
-        var sut = new Checkout();
+        var pricingRuleForItemA = new PricingRuleForItemA();
+        var pricingRuleForItemB = new PricingRuleForItemB();
+        
+        var sut = new Checkout([pricingRuleForItemA, pricingRuleForItemB]);
         sut.Scan("B");
         sut.Scan("A");
         sut.Scan("B");

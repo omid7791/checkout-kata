@@ -68,7 +68,7 @@ public class Checkout : ICheckout
 
     public int GetTotalPrice()
     {
-        var totalPrice = _basketItems.Sum(item => item.GetPrice());
+        var totalPrice = _pricingRules.Sum(rule => rule.GetPrice(_basketItems));
 
         return totalPrice;
     }
